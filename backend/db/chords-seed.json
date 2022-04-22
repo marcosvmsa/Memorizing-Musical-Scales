@@ -1,0 +1,107 @@
+[
+   {
+    "note": "C", 
+    "harmonico":
+        {
+            "I": "C7+",
+            "II": "Dm7",
+            "III": "Em7",	
+            "IV": "F7+",	
+            "V": "G7",	
+            "VI": "Am7",	
+            "VII": "Bm7(b5)"
+        },
+    "avoidNotes": "F",
+    "relativa": "Am"
+    },
+   {
+    "note": "D", 
+    "harmonico":
+        {
+            "I": "D7+",
+            "II": "Em7",
+            "III": "F#m7",	
+            "IV": "G7+",	
+            "V": "A7",	
+            "VI": "Bm7",	
+            "VII": "C#m(b5)"
+        },
+    "avoidNotes": "G",
+    "relativa": "Bm"
+    },
+   {
+    "note": "E", 
+    "harmonico":
+        {
+            "I": "E7+",
+            "II": "F#m7",
+            "III": "G#m7",	
+            "IV": "A7+",	
+            "V": "B7",	
+            "VI": "C#m7",	
+            "VII": "D#m7(b5)"
+        },
+    "avoidNotes": "A",
+    "relativa": "C#m"
+    },
+   {
+    "note": "F", 
+    "harmonico":
+        {
+            "I": "F7+",
+            "II": "Gm7",
+            "III": "Am7",	
+            "IV": "Bb7+",	
+            "V": "C7",	
+            "VI": "Dm7",	
+            "VII": "Em7(b5)"
+        },
+    "avoidNotes": "Bb",
+    "relativa": "Dm"
+    },
+   {
+    "note": "G", 
+    "harmonico":
+        {
+            "I": "G7+",
+            "II": "Am7",
+            "III": "Bm7",	
+            "IV": "C7+",	
+            "V": "D7",	
+            "VI": "Em7",	
+            "VII": "F#m7(b5)"
+        },
+    "avoidNotes": "C",
+    "relativa": "Em"
+    },
+   {
+    "note": "A", 
+    "harmonico":
+        {
+            "I": "A7+",
+            "II": "Bm7",
+            "III": "C#m7",	
+            "IV": "D7+",	
+            "V": "E7",	
+            "VI": "F#m",	
+            "VII": "G#m7(b5)"
+        },
+    "avoidNotes": "D",
+    "relativa": "F#m"
+    },
+   {
+    "note": "B", 
+    "harmonico":
+        {
+            "I": "B7+",
+            "II": "C#m7",
+            "III": "D#m7",	
+            "Iv": "E7+",	
+            "V": "F#7",	
+            "VI": "G#m7",	
+            "VII": "A#m7(b5)"
+        },
+    "avoidNotes": "E",
+    "relativa": "G#m"
+    }
+]

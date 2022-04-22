@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/style/mainStyle.css">
+    <script src="../public/script/script.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Londrina+Shadow&family=Montserrat:wght@100&display=swap" rel="stylesheet"> 
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>  
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
+    <title> Memorizing Musical Scales </title>
+</head>
+<body>
+    <header>
+        <a class="buttonLog" href="login.html">LOGIN</a>
+        <h1> MEMORIZING MUSICAL SCALES </h1>
+    </header>
+    <main class="content" id="main">
+        <form class="wrap">
+            <select class="box" name="notes" id="boxNotes">
+                <option class="butCont1" value="C" >C "Do" </option>
+                <option class="butCont2" value="D" >D "Re" </option>
+                <option class="butCont3" value="E" >E "Mi" </option>
+                <option class="butCont4" value="F" >F "Fa" </option>
+                <option class="butCont5" value="G" >G "Sol"</option>
+                <option class="butCont6" value="A" >A "La" </option>
+                <option class="butCont7" value="B" >B "Si" </option>
+            </select>
+            <select class="box" name="majorMinor" id="majorMinor">
+                <option value="minor">Minor</option>
+                <option value="major">Major</option>
+            </select>
+            <select class="box" name="cordExte" id="cordExte">
+                <option value="regular">Regular</option>
+                <option value="#">#</option>
+                <option value="b">b</option>
+            </select>
+            <!-- <button class="initSubm"> Search</button>   -->
+            <button id="buttonDuble1" class="buttDuble movesOn">Search</button>
+
+            <!-- <div class="initSubm">
+                <input type="submit" value="Search">
+            </div> -->
+        </form>
+        <div class="viewContent" >
+            <ul class="key"></ul>
+            <ul class="value"></ul>
+        </div>
+    </main>
+    <footer>
+        <div class="brandLogo" >MarcosProduction <img src="" alt="">   </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,130 @@
+body {
+    width: 100%;
+    margin: 0 auto;
+    background-image: url(../img/IMG_3220.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+   
+}
+
+header {
+    width: 100%;
+    /* background-color: #fb6732a9; */
+    /* background-color: #f4371187; */
+    /* background-color: #f4ec113f;; */
+    background-image: linear-gradient(to right, rgba(247, 251, 251, 0), rgba(255, 170, 0, 0.313));
+    height: 100px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+h1{
+    color: #f437119b;
+    font-size: 50px;
+    font-family: 'Raleway', sans-serif;
+}
+.buttonLog {
+    font-family: 'Raleway', sans-serif;
+    color: #f43711;
+    background-color: #fbadfb73;
+    border-color: #007bff;
+    text-decoration: none;
+    box-sizing: border-box;
+    float: right;
+    margin-top: 15px;
+    margin-right: 20px;
+    border: 3px solid #f437119b;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+}
+
+footer {
+    color: #f43711;
+    background-image: linear-gradient(to left, rgba(247, 251, 251, 0), rgba(0, 208, 255, 0.313));
+    padding: 20px 20px;
+}
+
+/* sticky footer */
+html,
+body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-flow: column;
+    align-content: center;
+    
+}
+
+.content {
+    flex: 1;
+    /* padding: 100px;     */
+}
+
+footer {
+    margin-top: auto;
+}
+
+.wrap {
+    display: flex;
+    justify-content: center;
+    align-content: stretch;
+    align-items: center;
+    gap: 50px;
+    padding-top: 10px;
+}
+
+.boxNotes,
+.majorMinor,
+.cordExte,.initSubm{
+    margin-top: 15px;
+    margin-right: 20px;
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+}
+
+.box{
+    font-family: 'Raleway', sans-serif;
+    color: #f43711d7;
+    background-color: #fbadfb73;
+    border: 3px solid #f437119b;
+    border-radius: 0.25rem;
+    font-size: 20px;
+}
+
+.viewContent,.key,.value{
+    display: none;
+}
+
+.viewContent{
+    /* display: none; */
+    width: 100%;
+    height: 500px;
+    margin: 10PX;
+    background-color: #d6edf0;
+    
+    
+}
+
+.key,.value{
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+}
+.brandLogo{
+    float: right;
+    font-size: large;
+}
+
+.movesOn{
+    color: #f43711d7;
+    background-color: rgba(255, 170, 0, 0.313);
+    border: 3px solid #f437119b;
+    border-radius: 0.25rem;
+    font-size: 20px;
+}
