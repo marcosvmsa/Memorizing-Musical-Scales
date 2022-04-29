@@ -4,28 +4,26 @@ body {
     background-image: url(../img/IMG_3220.jpg);
     background-size: cover;
     background-attachment: fixed;
-   
 }
 
 header {
     width: 100%;
-    /* background-color: #fb6732a9; */
-    /* background-color: #f4371187; */
-    /* background-color: #f4ec113f;; */
     background-image: linear-gradient(to right, rgba(247, 251, 251, 0), rgba(255, 170, 0, 0.313));
     height: 100px;
     margin-bottom: 10px;
     text-align: center;
 }
+
 h1{
     color: #f437119b;
     font-size: 50px;
     font-family: 'Raleway', sans-serif;
 }
+
 .buttonLog {
     font-family: 'Raleway', sans-serif;
     color: #f43711;
-    background-color: #fbadfb73;
+    background-color: #fbadfb54;
     border-color: #007bff;
     text-decoration: none;
     box-sizing: border-box;
@@ -91,23 +89,24 @@ footer {
 .box{
     font-family: 'Raleway', sans-serif;
     color: #f43711d7;
-    background-color: #fbadfb73;
+    background-color: #fbadfb51;
     border: 3px solid #f437119b;
     border-radius: 0.25rem;
     font-size: 20px;
 }
 
-.viewContent,.key,.value{
+#showContent{
     display: none;
 }
 
 .viewContent{
-    /* display: none; */
+    background-image: linear-gradient(to left, rgba(247, 251, 251, 0), rgba(0, 208, 255, 0.138));
     width: 100%;
     height: 500px;
-    margin: 10PX;
+    margin: 10px 0px 30px 0px;
     background-color: #d6edf0;
-    
+    display: flex;
+    justify-content: center;
     
 }
 
@@ -116,6 +115,7 @@ footer {
     justify-content: center;
     justify-items: center;
 }
+
 .brandLogo{
     float: right;
     font-size: large;
@@ -123,8 +123,29 @@ footer {
 
 .movesOn{
     color: #f43711d7;
-    background-color: rgba(255, 170, 0, 0.313);
+    background-color: rgba(255, 170, 0, 0.168);
     border: 3px solid #f437119b;
     border-radius: 0.25rem;
     font-size: 20px;
+}
+
+/* table{
+   text-indent: center;
+} */
+
+.minha-tabela {
+    border-collapse: collapse;
+    width: 50%;
+}
+
+.minha-tabela td, .minha-tabela caption {
+    border: 1px #000 solid;
+}
+
+.minha-tabela caption {
+    border-bottom: none;
+}
+
+td{
+    text-align: center;
 }

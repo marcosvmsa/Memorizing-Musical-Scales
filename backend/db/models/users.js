@@ -1,18 +1,11 @@
 const mongoose = require('../connection');
-require('')
+
 const userSchma = new mongoose.Schema(
     {
-        id:{type: String,required: true, unique: true},
-        progress:[{
-            I: {type: String},
-            II: {type: String},
-            III: {type: String},
-            VI: {type: String},
-            V: {type: String},
-            VI: {type: String},
-            VII: {type: String},
-        }],
+        userId: String,
+        progress:[{}],
     }
 );
 
-module.exports = mongoose.model('user', userSchma);
+const User = mongoose.model('user', userSchma);
+module.exports = User;

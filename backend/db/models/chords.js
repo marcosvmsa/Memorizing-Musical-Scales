@@ -3,13 +3,13 @@ const Schma = mongoose.Schema;
 
 const ChordFamilySchma = new Schma(
     {
-        note: {type: String, required: true, unique: true },
+        note: {type: String, required: true},
         harmonico:
             {
                 I: {type: String},
                 II: {type: String},
                 III: {type: String},
-                VI: {type: String},
+                IV: {type: String},
                 V: {type: String},
                 VI: {type: String},
                 VII: {type: String},

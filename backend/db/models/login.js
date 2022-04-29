@@ -2,9 +2,10 @@ const mongoose = require('../connection');
 
 const loginSchma = new mongoose.Schema(
     {
-        email:{type: String,required: true, unique: true},
+        UserName:{type: String,required: true},
+        email:{type: String,required: true},
         picture:{type: String},
-        password:{type: String,required: true}
+        password:{type: String}
     }
 );
 

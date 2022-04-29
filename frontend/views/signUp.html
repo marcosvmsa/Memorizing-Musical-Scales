@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../public/script/signUpScript.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="../public/style/signinStyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Londrina+Shadow&family=Montserrat:wght@100&display=swap"
+        rel="stylesheet">
+    <title>Sign Up</title>
+</head>
+
+<body style="font-family: 'Raleway', sans-serif">
+    <header>
+        <h1> MEMORIZING MUSICAL SCALES </h1>
+        <h2> CREATE YOUR ACCOUNT</h2>
+    </header>
+    <main>
+        <div class="wrapForm">
+            <form class="inputField" action="/register" method="POST">
+                <label for="fname">User Name</label>
+                <input id="fname" name="fname" type="text" class="validate" placeholder="User Name"><br>
+                <label for="femail">Email</label>
+                <input id="femail" name="femail" type="email" class="validate" placeholder="Email"><br>
+                <label for="fpassword">Password</label>
+                <input id="fpassword" name="fpassword" type="password" class="validate" placeholder="Password"><br>
+                <label for="fimgAvatar">Avatar Image</label>
+                <input id="fimgAvatar" name="fimgAvatar" type="text" class="validate" placeholder="Avatar Img"><br>
+            </form>
+            <button class="btn" id="submit">SUBMIT</button>
+        </div>
+    </main>
+    <footer>
+        <div class="brandLogo">MarcosProduction<img src="" alt=""> </div>
+    </footer>
+    <!-- popUp -->
+    <div id="popupWrapper">
+        <div class="popup">
+            <button id="closePopup">&times</button>
+            <div class="popup-content">
+                <p id="popupMessage"> erro</p>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

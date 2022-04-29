@@ -1,45 +1,34 @@
 const express = require('express');
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 const router = express.Router();
-const Chord = require('../db/models/chords')
+const Login = require('../db/models/login');
 
+router.post('/', async (req, res) => {
+    console.log(req.body)
+    const {email, password} = req.body
+    try{
+        const userData =  await Login.findOne({email})            
+            const isPasswordValid =  await bcrypt.compare(password, userData.password);
+            if(isPasswordValid){
+                res.send(JSON.stringify({
+                    token: true,
+                    userId: userData._id
+                }))        
+            }else{
+                res.send(JSON.stringify({token: false}))      
+            }
+    }catch(error){
+        res.send(JSON.stringify({token: false, error}))
+    }
+})    
 
-router.get('/', (req, res)=>{
-    gifModo.find({})
-    .then((cont)=>{res.json(cont)})
-    // .then((cont)=>{res.redirect('/gifs', {cont} )})
-    .catch(console.error)
-})
-
-router.post('/', (req, res) => {
-    gifModo.create(req.body)
-        .then(gifs => res.redirect('/gifs'))
-        .catch(console.error);
-});
-
-router.get('/:id/edit', (req, res) => {
-    const id = req.params.id;
-    gifModo.findById(id)
-        .then(gifs =>  res.render('pokes/edit', gifs))
-        .catch(console.error);
-});
-
-router.put('/:id', (req, res) => {
-    gifModo.findByIdAndUpdate(req.params.id ,
-        {
-            name: req.body.name,
-            img: req.body.img
-        },
-        { new: true }
-    )
-    .then(() => res.redirect('/gifs'))
-    .catch(console.error);
-});
-
-router.delete('/:id', (req, res) => {
-    const id = req.params.id;
-    gifModo.findOneAndRemove({ _id: id })
-        .then(() => res.redirect('/gifs'))
-        .catch(console.error);
-});
-
- module.exports = router
+module.exports = router;
+// -----------------exemplos-------------------------
+// router.post('/register', async (req, res) => {
+//     const {email, password} = req.body
+//     const hashPassword =  await bcrypt.hash(password, saltRounds);
+//     Login.create({email,password: hashPassword })
+//         .then(() => {res.send(JSON.stringify({successful: true}))})
+//         .catch(console.error);
+// });

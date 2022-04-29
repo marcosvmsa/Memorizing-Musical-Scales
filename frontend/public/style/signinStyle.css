@@ -1,0 +1,97 @@
+body {
+    width: 100%;
+    margin: 0 auto;
+    background-image: linear-gradient(to left, rgba(247, 251, 251, 0), rgba(0, 208, 255, 0.313));
+    
+} 
+
+.main{
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    justify-content: center;
+}
+
+h1{
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+    color: #92cea8;
+}
+h2{
+    font-family: 'Raleway', sans-serif;  
+    text-align: center;
+}
+
+.validate{
+    border-radius: 10px;
+}
+
+.wrapForm{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+form{
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.btn{
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+#popupWrapper{
+    display: none;
+    background: rgba(0, 0, 0, -1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.popup{
+    font-family: Arial;
+    text-align: center;
+    width: 100%;
+    max-width: 300px;
+    margin: 10% auto;
+    padding: 20px;
+    background: linear-gradient(to left, rgba(247, 251, 251, 0), rgba(0, 208, 255, 0.313));
+    position: relative;
+    border: 5px solid black;
+}
+
+.popup-close{
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+}
+
+/* sticky footer */
+html,
+body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-flow: column;
+    align-content: center;
+    
+}
+
+.content {
+    flex: 1;
+}
+
+footer {
+    margin-top: auto;
+}

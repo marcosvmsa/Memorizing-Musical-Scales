@@ -15,7 +15,7 @@ Login.deleteMany({})
         Login.insertMany(loginSeed)
             .then(console.log)
             .catch(console.error)
-            .finally(()=>process.exit())
+            // .finally(()=>process.exit())
 
     })
     
