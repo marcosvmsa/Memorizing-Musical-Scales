@@ -3,9 +3,8 @@ const express = require('express');
 const config = require('config');
 const PORT = process.env.PORT || 4000;
 
-console.log(process.env.DB_USER);
-console.log(process.env.ENV); 
-console.log(process.env.DB_PORT)
+// console.log(process.env);
+
 
 
 const app  = express();
