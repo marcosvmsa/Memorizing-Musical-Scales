@@ -1,11 +1,12 @@
 const movesOn = document.querySelector('.movesOn');
+const saveButt = document.querySelector('.saveButt');
+const editButt = document.querySelector('.editButt');
+const deletButt = document.querySelector('.deletButt');
 const boxNotes = document.getElementById('boxNotes');
 const selectProgress = document.getElementById('selectProgress');
 const pregressName = document.getElementById('pregressName');
-const caption = document.getElementById('caption')
 const div1 = document.getElementById('div1');
 const div2 = document.getElementById('div2');
-const saveButt = document.querySelector('.saveButt');
 const userId = sessionStorage.getItem('data');
 let newDrop;
 
@@ -20,10 +21,10 @@ window.addEventListener('load', async() => {
       selectProgress.appendChild(option) 
       })
     selectProgress.addEventListener('change',(event)=>{
-      const test = data.progress.find(element => element.name === event.target.value)
-      pregressName.value = test.name
-      delete test.name
-      addDropArea(test)
+      const findName = data.progress.find(element => element.name === event.target.value)
+      pregressName.value = findName.name
+      delete findName.name
+      addDropArea(findName)
     })
   }catch{
     console.error
@@ -61,10 +62,11 @@ function addDropArea (contente) {
       td.setAttribute("draggable", "true");
       td.setAttribute("ondragstart", "drag(event)");
       td.setAttribute("id", `drag${key}`);
-      td.setAttribute('value', value)
-      td.setAttribute("data-objeto",key,value)
-      td.innerHTML = value
-      div2.appendChild(td)   
+      td.setAttribute('value', value);
+      td.setAttribute("class","cleanFild");
+      td.setAttribute("data-objeto",key,value);
+      td.innerHTML = value;
+      div2.appendChild(td);
     }
 };
 //--------Drag And Dop ---------------------------------------- 
@@ -80,7 +82,7 @@ function drop(ev) {
   ev.preventDefault();
   const data = ev.dataTransfer.getData("text");
   const child = document.getElementById(data);
-  child.setAttribute('class', 'newDrop');
+  child.setAttribute('class', 'newDrop cleanFild');
   ev.target.appendChild(child);
   newDrop = document.querySelectorAll('.newDrop');  
 };
@@ -102,14 +104,70 @@ saveButt.addEventListener('click',async (e)=>{
 
   const {data} = await axios.post(`http://localhost:4000/user/add`,object)
     if(data){
-        document.getElementById('marcos').reset()
-        let toaqui = document.querySelectorAll('.newDrop'); 
-        for (el of toaqui){
-          el.remove()
+        document.getElementById('formeDragDrop').reset()
+        let cleanFild = document.querySelectorAll("[ondragstart]");
+        for (element of cleanFild){
+          element.remove()
         }
     }else{
-      console.log(data)
       console.error
-        // popUp(`Error : Data not saved`)
     };
 });
+
+editButt.addEventListener('click', async (event)=>{
+  event.preventDefault()
+    let id = userId
+    let name =  selectProgress.value
+    
+    let object = {
+      userId: userId,
+      keys: {
+        name: pregressName.value.trim()
+      }
+    }
+
+    for(let i = 0; i < div2.childNodes.length; i++){
+      let chave = div2.children[i].dataset.objeto
+      let value = div2.children[i].innerHTML
+      object.keys = ({...object.keys, [chave]: value})
+    }
+
+  const {delet} = await axios.put(`http://localhost:4000/user/${id}/${name}`, object)
+    if(delet){
+      document.getElementById('formeDragDrop').reset()
+        let cleanFild = document.querySelectorAll("[ondragstart]");
+        for (element of cleanFild){
+          element.remove()
+        }
+    }else{
+      console.error
+    }
+
+})
+
+deletButt.addEventListener('click', async (event)=>{
+  event.preventDefault()
+    let id = userId
+    let name =  pregressName.value.trim()
+  const {delet} = await axios.delete(`http://localhost:4000/user/${id}/${name}`)
+        cleanWindows()
+  if(delet){
+      cleanWindows()
+      
+        // document.getElementById('formeDragDrop').reset()
+        // let cleanFild = document.querySelectorAll("[ondragstart]");
+        // for (element of cleanFild){
+        //   element.remove()
+        // }
+    }else{
+      console.error
+    }
+})
+
+function cleanWindows (){
+  document.getElementById('formeDragDrop').reset()
+  let cleanFild = document.querySelectorAll("[ondragstart]");
+  for (element of cleanFild){
+    element.remove()
+  }
+}

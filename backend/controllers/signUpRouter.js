@@ -7,17 +7,10 @@ const Login = require('../db/models/login');
 router.post('/register', async (req, res) => {
     const {UserName,email, password, picture} = req.body
     const hashPassword =  await bcrypt.hash(password, saltRounds);
-    // Login.findOne({email})
-    //  .then((data) => {console.log(data)
-        //  if(email !== data.email){
-            Login.create({UserName,email,password: hashPassword,picture })
-                .then(() => {res.send(JSON.stringify({successful: true}))})
-                .catch(console.error)
-        // }else{
-        //     res.send(JSON.stringify({successful: false}))
-        // }
-    // })
-    .catch(console.error)
+        Login.create({UserName,email,password: hashPassword,picture })
+            .then(() => {res.send(JSON.stringify({successful: true}))})
+            .catch(console.error)
+    
 });
 
 

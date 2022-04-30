@@ -2,10 +2,10 @@ const express = require('express');
 const router = express.Router();
 const User = require('../db/models/users')
 var mongoose = require('mongoose');
+const async = require('hbs/lib/async');
 
 
 router.get('/:id', (req,res)=>{
-    console.log(req.params.id)
     User.findOne({userId: req.params.id})
         .then(data => res.send (JSON.stringify(data)))
         .catch(console.error)
@@ -28,26 +28,35 @@ router.post('/add', async(req, res) => {
     }
 });
 
-// router.get('/:id/edit', (req, res) => {
-//     const id = req.params.id;
-//     User.findById(id)
-//         .then(gifs =>  res.render('', gifs))
-//         .catch(console.error);
-// });
+router.put('/:id/:name', async(req, res) => {
+    // const {id: userId, name} = req.body
+    const {id: userId, name} = req.params;
+    let user = await User.findOne({userId})
+    const progress = user.progress.find(el => el.name == name)
+    user = {
+        ...user._doc,
+        progress
+    }
+    console.log(user)
+    // const result = await User.findOneAndReplace({_id: user._id}, user)
+    // return res.send(JSON.stringify({success: true}))
+    // const {id: userId, name} = req.body
+    // const existsOnDb = await User.findOne({userId: userId})
+    // try{
+    //     await User.updateOne({_id: existsOnDb['_id']}, {$push: { progress: keys}})
+    //     return res.send(JSON.stringify({success: true}))
+    // }catch{
+    //     console.error
+    // }
+    // console.log(`user`)
+    // console.log(user)
+    // const result = await User.findOneAndReplace({_id: user._id}, user,{new:true})
+    // res.send(result)
+});
 
-// router.put('/:id', (req, res) => {
-//     User.findByIdAndUpdate(req.params.id ,
-//         {
-//             name: req.body.name,
-//             img: req.body.img
-//         },
-//         { new: true }
-//     )
-//     .then(() => res.redirect('/gifs'))
-//     .catch(console.error);
-// });
 
 router.delete('/:id/:name', async (req, res) => {
+    console.log(req.params)
     const {id: userId, name} = req.params;
     let user = await User.findOne({userId})
     const progress = user.progress.find(el => el.name !== name)
@@ -55,10 +64,8 @@ router.delete('/:id/:name', async (req, res) => {
         ...user._doc,
         progress
     }
-
     const result = await User.findOneAndReplace({_id: user._id}, user)
-    
-    res.send(result)
+    return res.send(JSON.stringify({success: true}))
 });
 
 module.exports = router
