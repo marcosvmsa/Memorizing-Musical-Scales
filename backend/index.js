@@ -1,7 +1,11 @@
 require('dotenv').config();
 const express = require('express');
 const config = require('config');
-const dotenv = require('dotenv');
+const PORT = process.env.PORT || 4000;
+
+console.log(process.env.DB_USER);
+console.log(process.env.ENV); 
+console.log(process.env.DB_PORT)
 
 
 const app  = express();
@@ -11,7 +15,7 @@ const loginRouters = require('./controllers/loginRouters')
 const mainRouters  = require('./controllers/mainRouters')
 const userRouters  = require('./controllers/userRouters')
 const signUpRouter  = require('./controllers/signUpRouter')
-const PORT = process.env.PORT || 4000;
+
 
 
 
