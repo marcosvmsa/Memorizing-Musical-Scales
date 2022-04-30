@@ -1,5 +1,8 @@
 require('dotenv').config();
 const express = require('express');
+const config = require('config');
+
+
 const app  = express();
 const cors = require('cors');
 const methodOverride = require('method-override')
@@ -8,6 +11,8 @@ const mainRouters  = require('./controllers/mainRouters')
 const userRouters  = require('./controllers/userRouters')
 const signUpRouter  = require('./controllers/signUpRouter')
 const PORT = process.env.PORT || 4000;
+
+
 
 app.use(express.json());
 app.use(methodOverride('_method'))

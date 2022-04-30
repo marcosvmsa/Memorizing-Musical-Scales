@@ -4,8 +4,8 @@ const loginSchma = new mongoose.Schema(
     {
         UserName:{type: String,required: true},
         email:{type: String,required: true},
-        picture:{type: String},
-        password:{type: String}
+        password:{type: String},
+        picture:{type: String}
     }
 );
 

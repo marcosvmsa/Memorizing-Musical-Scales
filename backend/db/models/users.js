@@ -2,8 +2,8 @@ const mongoose = require('../connection');
 
 const userSchma = new mongoose.Schema(
     {
-        userId: String,
-        progress:[{}],
+        userId: {type: mongoose.Schema.Types.ObjectId, ref: "Login"},
+        progress: {type: mongoose.Schema.Types.Array, of: Object},
     }
 );
 

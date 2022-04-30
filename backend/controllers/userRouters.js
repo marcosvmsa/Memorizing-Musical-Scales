@@ -1,51 +1,31 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../db/models/users')
+var mongoose = require('mongoose');
 
 
-
-// router.get('/', (req,res)=>{
-//     // let note = req.params.note 
-//     User.find({})
-//         .then(data => {res.json(data)})
-//         .catch(console.error)
-// })
-
-
-// router.get('/', (req, res)=>{
-//    res.send(res.)
-    // .then((cont)=>{res.json(cont)})
-    // // .then((cont)=>{res.redirect('/gifs', {cont} )})
-    // .catch(console.error)
-// })
-// router.get('/', (req, res)=>{
-//     User.find({})
-//     .then((cont)=>{res.json(cont)})
-//     // .then((cont)=>{res.redirect('/gifs', {cont} )})
-//     .catch(console.error)
-// })
+router.get('/:id', (req,res)=>{
+    console.log(req.params.id)
+    User.findOne({userId: req.params.id})
+        .then(data => res.send (JSON.stringify(data)))
+        .catch(console.error)
+})
 
 router.post('/add', async(req, res) => {  
-    console.log(req.body)
-    const objeto = req.body
-    let userId;
-    const progress = new Object()
-    for( const [key,value] of Object.entries(objeto)){
-        if(key === 'userId'){
-            userId = value
-        }else{
-            progress[key] = value        
+    const {userId, keys} = req.body
+    const existsOnDb = await User.findOne({userId: userId})
+    try{
+        if (existsOnDb) {
+            await User.updateOne({_id: existsOnDb['_id']}, {$push: { progress: keys}})
+                return res.send(JSON.stringify({success: true}))
+        } else {
+            await User.create({userId, progress: keys})
+                return res.send(JSON.stringify({success: true}))
         }
     }
-
-    User.findOneAndUpdate({userId: userId},{$push:{ progress: progress}})
-        .then(data => {res.send(JSON.stringify({successful: true}))
-        .then(
-            User.create([{userId: userId, progress: [progress]}])
-                .then(() => {res.send(JSON.stringify({successful: true}))})
-                .catch(console.error)
-        )
-        .catch(console.log(error))
+    catch(error){
+        console.error
+    }
 });
 
 // router.get('/:id/edit', (req, res) => {
@@ -67,12 +47,19 @@ router.post('/add', async(req, res) => {
 //     .catch(console.error);
 // });
 
-// router.delete('/:id', (req, res) => {
-//     const id = req.params.id;
-//     User.findOneAndRemove({ _id: id })
-//         .then(() => res.redirect('/gifs'))
-//         .catch(console.error);
-// });
+router.delete('/:id/:name', async (req, res) => {
+    const {id: userId, name} = req.params;
+    let user = await User.findOne({userId})
+    const progress = user.progress.find(el => el.name !== name)
+    user = {
+        ...user._doc,
+        progress
+    }
+
+    const result = await User.findOneAndReplace({_id: user._id}, user)
+    
+    res.send(result)
+});
 
 module.exports = router
 

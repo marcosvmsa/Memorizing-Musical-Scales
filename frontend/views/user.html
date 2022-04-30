@@ -22,7 +22,7 @@
 </header>
 <main class="content" id="main">
     <div id="showContent">
-        <form class="wrap">
+        <form class="wrap" id="wrapForm">
             <select class="box" name="notes" id="boxNotes"  >
                 <option class="butCont1" value="C">C "Do" </option>
                 <option class="butCont2" value="D">D "Re" </option>
@@ -43,16 +43,25 @@
             </select>
             <button id="searchButton" class="buttDuble movesOn">Search</button>
         </form>
+    </div>
+    <form action="" id="marcos">
         <div class="viewContent mostar" >
             <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 100%; height:300px;" ></div>
         </div>
-    </div>
-    <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 100%; height:300px;"></div>
-    <div class="wrapBnt">
+        <select id="selectProgress" class="box" name="notes" >
+            <option disabled selected>Select an option here</option>    
+        </section>
+        <input type="text" Name="pregressName" id="pregressName">
         <button class="saveButt btn" >SAVE  </button>
-        <button class="editButt btn" >EDIT  </button>
-        <button class="deletButt btn">DELETE</button>
-    </div>
+        <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 100%; height:300px;"></div>
+                
+        <div class="wrapBnt">
+            <button class="editButt btn" >EDIT  </button>
+            <button class="deletButt btn">DELETE</button>
+        </div>
+    </form>
+
+    
 </main>
 <footer>
     <div class="brandLogo">MarcosProduction <img src="" alt=""> </div>
