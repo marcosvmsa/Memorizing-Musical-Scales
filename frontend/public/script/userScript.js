@@ -10,7 +10,6 @@ const div2 = document.getElementById('div2');
 const userId = sessionStorage.getItem('data');
 let newDrop;
 
-
 window.addEventListener('load', async() => {
   let {data} = await axios.get(`http://localhost:4000/user/${userId}`)
   try{
@@ -31,14 +30,12 @@ window.addEventListener('load', async() => {
   }
 })
 
-
 movesOn.addEventListener('click', (event)=>{
   event.preventDefault()
   const note = boxNotes.value
   axios.get(`http://localhost:4000/${note}`)
   .then(response => {addContante(response.data)})
 })
-
 
 function addContante (contente) {
   showContent.style.display = 'block';
@@ -102,15 +99,9 @@ saveButt.addEventListener('click',async (e)=>{
     object.keys = ({...object.keys, [chave]: value})
   });
 
-  
-
   const {data} = await axios.post(`http://localhost:4000/user/add`,object)
     if(data){
-        document.getElementById('formeDragDrop').reset()
-        let cleanFild = document.querySelectorAll("[ondragstart]");
-        for (element of cleanFild){
-          element.remove()
-        }
+      cleanWindows()
     }else{
       console.error
     };
@@ -133,20 +124,15 @@ editButt.addEventListener('click', async (event)=>{
       let value = div2.children[i].innerHTML
       object.progress = ({...object.progress, [chave]: value})
     }
-// console.log(object)
-  const {delet} = await axios.put(`http://localhost:4000/user/${id}/${name}`, object)
-    if(delet){
-      document.getElementById('formeDragDrop').reset()
-        let cleanFild = document.querySelectorAll("[ondragstart]");
-        for (element of cleanFild){
-          element.remove()
-        }
+
+  const upDate = await axios.put(`http://localhost:4000/user/${id}/${name}`, object)
+    if(upDate.data.success){    
+      cleanWindows()  
     }else{
       console.error
     }
-
 })
-// linha para teste 
+
 deletButt.addEventListener('click', async (event)=>{
   event.preventDefault()
     let id = userId
@@ -155,12 +141,6 @@ deletButt.addEventListener('click', async (event)=>{
         cleanWindows()
   if(delet){
       cleanWindows()
-      
-        // document.getElementById('formeDragDrop').reset()
-        // let cleanFild = document.querySelectorAll("[ondragstart]");
-        // for (element of cleanFild){
-        //   element.remove()
-        // }
     }else{
       console.error
     }

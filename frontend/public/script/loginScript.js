@@ -4,7 +4,6 @@ const erroMessag = document.getElementById('erroMessag');
 const submit = document.getElementById('submit');
 let validMail = false;
 
-
 submit.addEventListener('click',async (event)=>{
     event.preventDefault()
     const validateEmail = email.value

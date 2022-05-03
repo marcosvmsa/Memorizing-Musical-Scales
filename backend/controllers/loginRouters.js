@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
@@ -24,11 +25,3 @@ router.post('/', async (req, res) => {
 })    
 
 module.exports = router;
-// -----------------exemplos-------------------------
-// router.post('/register', async (req, res) => {
-//     const {email, password} = req.body
-//     const hashPassword =  await bcrypt.hash(password, saltRounds);
-//     Login.create({email,password: hashPassword })
-//         .then(() => {res.send(JSON.stringify({successful: true}))})
-//         .catch(console.error);
-// });

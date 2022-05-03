@@ -4,7 +4,6 @@ const password = document.getElementById('password');
 const popupMessage = document.getElementById('popupMessage');
 const submit = document.getElementById('submit');
 
-
 submit.addEventListener('click',async (event)=>{
     event.preventDefault()
     const UserName = validate[0].value

@@ -1,7 +1,6 @@
 body {
     width: 100%;
     margin: 0 auto;
-    /* background-image: url(../img/IMG_3220.jpg); */
     background-image: linear-gradient(to left, rgba(247, 251, 251, 0), rgba(255, 170, 0, 0.313));
     background-color: #fbadfb87;
     background-size: cover;

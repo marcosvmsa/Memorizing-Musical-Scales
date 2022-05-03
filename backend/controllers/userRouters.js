@@ -1,9 +1,9 @@
+require('dotenv').config();
 const express = require('express');
 const router = express.Router();
 const User = require('../db/models/users')
 var mongoose = require('mongoose');
 const async = require('hbs/lib/async');
-
 
 router.get('/:id', (req,res)=>{
     User.findOne({userId: req.params.id})
@@ -31,23 +31,20 @@ router.post('/add', async(req, res) => {
 router.put('/:id/:name', async(req, res) => {
     const {id: userId, name} = req.params;
     let user = await User.findOne({userId})
-    const progress = user.progress.find(el => el.name == name)
-    // user = {
-    //     ...user._doc,
-    //     progress
-    // }
-    // // console.log(user._id)
-    console.log(req.body.progress)
-    // // console.log(progress)
+    const newProgress = []
+    const progress = user.progress.find(el => {
+        if(el.name !== name){
+            newProgress.push(el)
+        }
+    })
     
-    const updd = await User.update({ _id: user._id},{$pull:{progress: name}})
-    // const updd = await User.findOneAndUpdate({ _id: user._id},{progress: [req.body.process]},{new:true})
-    // console.log( 'updd===>' , updd)
-        // .then((items) => console.log(items));
-
-        // console.log(updd)
+    newProgress.push(req.body.progress)
+    const updd = await User.findOneAndUpdate({ userId: userId},{progress: newProgress},{new:true})      
+        .then((data) => { 
+                    return res.send(JSON.stringify({success: true}))
+                })
+        .catch(console.error)
 });
-
 
 router.delete('/:id/:name', async (req, res) => {
     const {id: userId, name} = req.params;
@@ -57,9 +54,8 @@ router.delete('/:id/:name', async (req, res) => {
         ...user._doc,
         progress
     }
-    console.log(user._id)
-    // const result = await User.findOneAndReplace({_id: user._id}, user)
-    // return res.send(JSON.stringify({success: true}))
+    const result = await User.findOneAndReplace({_id: user._id}, user)
+    return res.send(JSON.stringify({success: true}))
 });
 
 module.exports = router

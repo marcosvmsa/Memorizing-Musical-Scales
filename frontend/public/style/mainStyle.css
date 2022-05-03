@@ -58,7 +58,6 @@ body {
 
 .content {
     flex: 1;
-    /* padding: 100px;     */
 }
 
 footer {
@@ -128,10 +127,6 @@ footer {
     border-radius: 0.25rem;
     font-size: 20px;
 }
-
-/* table{
-   text-indent: center;
-} */
 
 .minha-tabela {
     border-collapse: collapse;
