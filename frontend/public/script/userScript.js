@@ -102,6 +102,8 @@ saveButt.addEventListener('click',async (e)=>{
     object.keys = ({...object.keys, [chave]: value})
   });
 
+  
+
   const {data} = await axios.post(`http://localhost:4000/user/add`,object)
     if(data){
         document.getElementById('formeDragDrop').reset()
@@ -121,7 +123,7 @@ editButt.addEventListener('click', async (event)=>{
     
     let object = {
       userId: userId,
-      keys: {
+      progress: {
         name: pregressName.value.trim()
       }
     }
@@ -129,9 +131,9 @@ editButt.addEventListener('click', async (event)=>{
     for(let i = 0; i < div2.childNodes.length; i++){
       let chave = div2.children[i].dataset.objeto
       let value = div2.children[i].innerHTML
-      object.keys = ({...object.keys, [chave]: value})
+      object.progress = ({...object.progress, [chave]: value})
     }
-
+// console.log(object)
   const {delet} = await axios.put(`http://localhost:4000/user/${id}/${name}`, object)
     if(delet){
       document.getElementById('formeDragDrop').reset()

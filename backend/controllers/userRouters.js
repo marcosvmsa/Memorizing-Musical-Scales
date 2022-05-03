@@ -29,34 +29,27 @@ router.post('/add', async(req, res) => {
 });
 
 router.put('/:id/:name', async(req, res) => {
-    // const {id: userId, name} = req.body
     const {id: userId, name} = req.params;
     let user = await User.findOne({userId})
     const progress = user.progress.find(el => el.name == name)
-    user = {
-        ...user._doc,
-        progress
-    }
-    console.log(user)
-    // const result = await User.findOneAndReplace({_id: user._id}, user)
-    // return res.send(JSON.stringify({success: true}))
-    // const {id: userId, name} = req.body
-    // const existsOnDb = await User.findOne({userId: userId})
-    // try{
-    //     await User.updateOne({_id: existsOnDb['_id']}, {$push: { progress: keys}})
-    //     return res.send(JSON.stringify({success: true}))
-    // }catch{
-    //     console.error
+    // user = {
+    //     ...user._doc,
+    //     progress
     // }
-    // console.log(`user`)
-    // console.log(user)
-    // const result = await User.findOneAndReplace({_id: user._id}, user,{new:true})
-    // res.send(result)
+    // // console.log(user._id)
+    console.log(req.body.progress)
+    // // console.log(progress)
+    
+    const updd = await User.update({ _id: user._id},{$pull:{progress: name}})
+    // const updd = await User.findOneAndUpdate({ _id: user._id},{progress: [req.body.process]},{new:true})
+    // console.log( 'updd===>' , updd)
+        // .then((items) => console.log(items));
+
+        // console.log(updd)
 });
 
 
 router.delete('/:id/:name', async (req, res) => {
-    console.log(req.params)
     const {id: userId, name} = req.params;
     let user = await User.findOne({userId})
     const progress = user.progress.find(el => el.name !== name)
@@ -64,22 +57,13 @@ router.delete('/:id/:name', async (req, res) => {
         ...user._doc,
         progress
     }
-    const result = await User.findOneAndReplace({_id: user._id}, user)
-    return res.send(JSON.stringify({success: true}))
+    console.log(user._id)
+    // const result = await User.findOneAndReplace({_id: user._id}, user)
+    // return res.send(JSON.stringify({success: true}))
 });
 
 module.exports = router
 
-
-// ----------exemplos------------
-// console.log(req.body)
-//     const arrayOfNotes = req.body.arrayOfNotes
-//     const {UserName,email, password, picture} = req.body
-//     arrayOfNotes.forEach(element => {console.log(element)});
-//     const nums = ['I', 'II', 'III']
-//     let progress = {}
-//     const data =  req.body.arrayOfNotes.map((chords, index) =>{progress[nums[index]]= chords} )
-//         console.log(progress)
 
 
  

@@ -12,11 +12,11 @@ const ChordFamilySchma = new Schma(
                 IV: {type: String},
                 V: {type: String},
                 VI: {type: String},
-                VII: {type: String},
+                VII: {type: String}
             },
         avoidNotes: {type:String},
         relativa: {type:String}
-    },
+    }
 );
 
 const Chord = mongoose.model('Chord', ChordFamilySchma);
