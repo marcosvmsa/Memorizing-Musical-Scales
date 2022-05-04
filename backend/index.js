@@ -1,7 +1,7 @@
 require('dotenv').config();
+const path = require('path')
 const express = require('express');
 const config = require('config');
-const path = require('path')
 const PORT = process.env.PORT || 4000;
 
 const app  = express();
@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(methodOverride('_method'))
 app.use(express.urlencoded({extended: true}));
 app.use(cors())
-app.use('/', express.static(path.join(__dirname, 'frontend')))
+app.use('/', express.static(path.join(__dirname, '/frontend/views/index.html')))
 app.use('/',mainRouters);
 app.use('/login',loginRouters)
 app.use('/user',userRouters)
