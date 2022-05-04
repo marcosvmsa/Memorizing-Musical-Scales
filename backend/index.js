@@ -7,7 +7,6 @@ const PORT = process.env.PORT || 4000;
 const app  = express();
 const cors = require('cors');
 const methodOverride = require('method-override')
-app.use('/', express.static(path.join(__dirname, 'frontend')))
 const loginRouters = require('./controllers/loginRouters')
 const mainRouters  = require('./controllers/mainRouters')
 const userRouters  = require('./controllers/userRouters')
@@ -17,6 +16,7 @@ app.use(express.json());
 app.use(methodOverride('_method'))
 app.use(express.urlencoded({extended: true}));
 app.use(cors())
+app.use('/', express.static(path.join(__dirname, 'frontend')))
 app.use('/',mainRouters);
 app.use('/login',loginRouters)
 app.use('/user',userRouters)

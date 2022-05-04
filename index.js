@@ -15,6 +15,7 @@
 // app.use(methodOverride('_method'))
 // app.use(express.urlencoded({extended: true}));
 // app.use(cors())
+// // app.use('/', express.static(path.join(__dirname, 'frontend')))
 // app.use('/',mainRouters);
 // app.use('/login',loginRouters)
 // app.use('/user',userRouters)
@@ -23,4 +24,3 @@
 // app.listen(PORT, ()=>{
 //     console.log(`Runing on Port :  ${PORT}`)
 // })
-

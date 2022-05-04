@@ -5,7 +5,7 @@ const Chord = require('../db/models/chords')
 
 
 router.get('/', (req,res)=>{
-    return res.send("Hello World")
+        res.sendFile(path.join(__dirname, '/Users/marcosvmsa/Desktop/sei/Projetos_de_entrega/Memorizing-Musical-Scales/frontend/views/index.html'));
 })
 
 
@@ -17,3 +17,5 @@ router.get('/:note', (req,res)=>{
 })
 
 module.exports = router;
+
+
