@@ -1,11 +1,13 @@
 require('dotenv').config();
 const express = require('express');
 const config = require('config');
+const path = require('path')
 const PORT = process.env.PORT || 4000;
 
 const app  = express();
 const cors = require('cors');
 const methodOverride = require('method-override')
+app.use('/', express.static(path.join(__dirname, 'frontend')))
 const loginRouters = require('./controllers/loginRouters')
 const mainRouters  = require('./controllers/mainRouters')
 const userRouters  = require('./controllers/userRouters')
