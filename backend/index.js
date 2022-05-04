@@ -21,7 +21,7 @@ app.use('/user',userRouters)
 app.use('/SingUp',signUpRouter)
 
 
-app.get('/app', (req,res)=>{
+app.get('/', (req,res)=>{
     res.sendFile(path.join(__dirname, '/frontend/views/index.html'));
 })
 
