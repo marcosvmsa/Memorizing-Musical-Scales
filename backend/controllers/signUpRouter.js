@@ -7,7 +7,7 @@ const router = express.Router();
 const Login = require('../db/models/login');
 
 router.get('/', (req,res)=>{
-    res.sendFile(path.join(__dirname, '/frontend/views/.signUphtml'));
+    res.sendFile(path.join(__dirname, '/frontend/views/.signUp.html'));
 });
 
 router.post('/register', async (req, res) => {
