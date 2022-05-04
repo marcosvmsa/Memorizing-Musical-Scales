@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const User = require('../db/models/users')
 var mongoose = require('mongoose');
-const async = require('hbs/lib/async');
+
 
 router.get('/:id', (req,res)=>{
     User.findOne({userId: req.params.id})
