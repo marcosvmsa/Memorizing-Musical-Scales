@@ -2,10 +2,10 @@ require('dotenv').config();
 const path = require('path')
 const express = require('express');
 const cors = require('cors');
-const loginRouters = require('./controllers/loginRouters')
-const mainRouters  = require('./controllers/mainRouters')
-const userRouters  = require('./controllers/userRouters')
-const signUpRouter  = require('./controllers/signUpRouter')
+const loginRouters = require('./backend/controllers/loginRouters')
+const mainRouters  = require('./backend/controllers/mainRouters')
+const userRouters  = require('./backend/controllers/userRouters')
+const signUpRouter  = require('./backend/controllers/signUpRouter')
 const methodOverride = require('method-override')
 const PORT = process.env.PORT || 4000;
 const app  = express();
@@ -28,5 +28,3 @@ app.get('/', (req,res)=>{
 app.listen(PORT, ()=>{
     console.log(`Runing on Port :  ${PORT}`)
 })
-
-
